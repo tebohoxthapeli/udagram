@@ -1,4 +1,4 @@
-import express, { Response, Request, Errback } from "express";
+import express, { Response, Request } from "express";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
 // Init the Express application
