@@ -1,4 +1,4 @@
-import express, { Response, Request, Express } from "express";
+import express, { Response, Request, Errback } from "express";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
 // Init the Express application
@@ -36,9 +36,10 @@ app.get("/filteredimage", async (req: Request, res: Response) => {
 
     try {
         const filteredImage = await filterImageFromURL(image_url);
-        // res.status(200).json({ filteredImage });
         res.status(200).sendFile(filteredImage);
-        await deleteLocalFiles([filteredImage]);
+        res.on("finish", async () => {
+            await deleteLocalFiles([filteredImage]);
+        });
     } catch (error) {
         res.status(500).json({ error });
     }
