@@ -1,0 +1,8 @@
+1. GitHub repository: https://github.com/tebohoxthapeli/udagram-image-filter
+2. Elastic Beanstalk URL: http://image-filtering-microservice-env.us-east-1.elasticbeanstalk.com/
+
+Additional notes:
+
+In my code, I only specified types where they were not inferred. If hovering over a variable or function indicated that its type was "any", then I explicitly gave it a different and more descriptive type.
+
+It seems as though the image at the URL https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg does not exist. Therefore, all requests to get that image fail. However, images at other URLs can be found, processed and then returned successfully. https://picsum.photos/200/300.jpg is one of the URLs that I used to test my application. It presented no issues.
