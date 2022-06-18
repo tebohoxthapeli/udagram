@@ -37,7 +37,7 @@ app.get("/filteredimage", async (req: Request, res: Response) => {
     try {
         const filteredImage = await filterImageFromURL(image_url);
         res.status(200).sendFile(filteredImage);
-        res.on("finish", async () => {
+        return res.on("finish", async () => {
             await deleteLocalFiles([filteredImage]);
         });
     } catch (error) {
@@ -47,8 +47,8 @@ app.get("/filteredimage", async (req: Request, res: Response) => {
 
 // Root Endpoint
 // Displays a simple message to the user
-app.get("/", (_, res: Response) => {
-    res.send("try GET /filteredimage?image_url={{}}");
+app.get("/", (_, res: Response): Response => {
+    return res.send("try GET /filteredimage?image_url={{}}");
 });
 
 // Start the Server
